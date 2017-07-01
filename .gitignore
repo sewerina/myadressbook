@@ -23,3 +23,7 @@ hs_err_pid*
 
 # Build directory
 myadressbook/target/* 
+
+# Idea files
+myadressbook/.idea/*
+*.iml
