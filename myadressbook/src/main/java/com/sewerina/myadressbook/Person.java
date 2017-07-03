@@ -5,9 +5,16 @@ package com.sewerina.myadressbook;
  */
 public class Person {
     private final String name;
+    private final Address address;
 
     public Person(String name) {
         this.name = name;
+        address = null;
+    }
+
+    public Person(String name, Address address) {
+        this.name = name;
+        this.address = address;
     }
 
     public boolean isPass(String name) {
@@ -16,5 +23,9 @@ public class Person {
 
     public int compareTo(Person person) {
         return this.name.compareTo(person.name);
+    }
+
+    public boolean isPassCountry(String country) {
+        return this.address.isContainsCountry(country);
     }
 }

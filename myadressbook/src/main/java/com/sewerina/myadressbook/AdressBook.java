@@ -44,7 +44,7 @@ public class AdressBook {
 
     public void sort() {
         int size = persons.length;
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             for (int j = i + 1; j < size; j++) {
                 if (persons[i].compareTo(persons[j]) > 0) {
                     Person t = persons[i];
@@ -54,5 +54,25 @@ public class AdressBook {
             }
         }
     }
+
+    public Person[] findByCountry(String country) {
+        int counter = 0;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPassCountry(country)) {
+                counter++;
+            }
+        }
+
+        Person[] result = new Person[counter];
+        int j = 0;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPassCountry(country)) {
+                result[j] = persons[i];
+                j++;
+            }
+        }
+        return result;
+    }
+
 
 }

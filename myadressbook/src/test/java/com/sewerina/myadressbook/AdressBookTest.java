@@ -87,4 +87,21 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[2] == c);
     }
 
+    public void test_findByCountry() {
+        AdressBook adressBook = new AdressBook();
+
+        Address address1 = new Address("Russia", "101", "Moscow");
+        Person person1 = new Person("Severin", address1);
+
+        Address address2 = new Address("USA", "900", "Boston");
+        Person person2 = new Person("Severin", address2);
+
+        adressBook.add(person1);
+        adressBook.add(person2);
+
+        Person[] persons = adressBook.findByCountry("Russia");
+        assertTrue(persons.length > 0);
+        assertTrue(persons[0] == person1);
+    }
+
 }

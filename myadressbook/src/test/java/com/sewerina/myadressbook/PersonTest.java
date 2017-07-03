@@ -20,4 +20,11 @@ public class PersonTest extends TestCase {
         assertFalse(new Person("Bill Gates").isPass("Jone"));
     }
 
+    public void testIsPassCountry() {
+        Address address1 = new Address("Russia", null, null);
+        Address address2 = new Address("Germany", null, null);
+        assertTrue(new Person("Severin", address1).isPassCountry("Russia"));
+        assertFalse(new Person("Severina", address2).isPassCountry("Russia"));
+    }
+
 }
