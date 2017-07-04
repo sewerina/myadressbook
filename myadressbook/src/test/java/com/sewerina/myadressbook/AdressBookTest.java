@@ -1,20 +1,13 @@
 package com.sewerina.myadressbook;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-public class AdressBookTest extends TestCase {
+import org.junit.Test;
 
-    public AdressBookTest(String name) {
-        super(name);
-    }
+import static org.junit.Assert.assertTrue;
 
+public class AdressBookTest{
 
-    public static Test suite() {
-        return new TestSuite(AdressBookTest.class);
-    }
-
+    @Test
     public void testFindByName_returnNotZeroArray_afterAddPerson() {
         AdressBook adressBook = new AdressBook();
         adressBook.add(new Person("Jone Morison"));
@@ -22,6 +15,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons.length > 0);
     }
 
+    @Test
     public void testFindByName_returnSamePerson_afterAddPerson() {
         AdressBook adressBook = new AdressBook();
         Person person = new Person("Jone Morison");
@@ -30,6 +24,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[0].equals(person));
     }
 
+    @Test
     public void testFindByName_returnTwoPersons_afterAddTwoPersons() {
         AdressBook adressBook = new AdressBook();
         adressBook.add(new Person("Jone Morison"));
@@ -38,6 +33,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons.length == 2);
     }
 
+    @Test
     public void testFindByName_returnTwoSamePersons_afterAddTwoPersons() {
         AdressBook adressBook = new AdressBook();
         Person person1 = new Person("Jone Morison");
@@ -49,6 +45,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[1].equals(person1) || persons[1].equals(person2));
     }
 
+    @Test
     public void testFindByName_returnTwoPersons_afterAddThreePersons() {
         AdressBook adressBook = new AdressBook();
         adressBook.add(new Person("Jone Morison"));
@@ -58,6 +55,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons.length == 2);
     }
 
+    @Test
     public void test_getAll() {
         AdressBook adressBook = new AdressBook();
         adressBook.add(new Person("Jone Morison"));
@@ -67,6 +65,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons.length == 3);
     }
 
+    @Test
     public void test_sort() {
         AdressBook adressBook = new AdressBook();
 
@@ -87,6 +86,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[2] == c);
     }
 
+    @Test
     public void test_findByCountry() {
         AdressBook adressBook = new AdressBook();
 
@@ -104,6 +104,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[0] == person1);
     }
 
+    @Test
     public void test_findByZip() {
         AdressBook adressBook = new AdressBook();
 
@@ -125,6 +126,7 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[0] == person2);
     }
 
+    @Test
     public void test_findByAddressLine() {
         AdressBook adressBook = new AdressBook();
 
