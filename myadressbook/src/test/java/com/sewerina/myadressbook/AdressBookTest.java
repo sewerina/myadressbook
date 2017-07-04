@@ -104,4 +104,42 @@ public class AdressBookTest extends TestCase {
         assertTrue(persons[0] == person1);
     }
 
+    public void test_findByZip() {
+        AdressBook adressBook = new AdressBook();
+
+        Address address1 = new Address(null,"555", null);
+        Person person1 = new Person(null, address1);
+
+        Address address2 = new Address(null, "777", null);
+        Person person2 = new Person(null, address2);
+
+        Address address3 = new Address(null, "555", null);
+        Person person3 = new Person(null, address3);
+
+        adressBook.add(person1);
+        adressBook.add(person2);
+        adressBook.add(person3);
+
+        Person[] persons = adressBook.findByZip("777");
+        assertTrue(persons.length > 0);
+        assertTrue(persons[0] == person2);
+    }
+
+    public void test_findByAddressLine() {
+        AdressBook adressBook = new AdressBook();
+
+        Address address1 = new Address(null, null, "Honey");
+        Person person1 = new Person(null, address1);
+
+        Address address2 = new Address(null, null, "Fruit");
+        Person person2 = new Person(null, address2);
+
+        adressBook.add(person1);
+        adressBook.add(person2);
+
+        Person[] persons = adressBook.findByAddressLine("Fruit");
+        assertTrue(persons.length > 0);
+        assertTrue(persons[0] == person2);
+    }
+
 }

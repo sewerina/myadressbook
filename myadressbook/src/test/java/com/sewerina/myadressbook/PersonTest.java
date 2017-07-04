@@ -27,4 +27,19 @@ public class PersonTest extends TestCase {
         assertFalse(new Person("Severina", address2).isPassCountry("Russia"));
     }
 
+    public void testIsPassZip() {
+        Address address1 = new Address(null,"50", null);
+        Address address2 = new Address(null, "10", null);
+        assertTrue(new Person(null, address1).isPassZip("50"));
+        assertFalse(new Person(null, address2).isPassZip("50"));
+    }
+
+    public void testIsPassAddressLine() {
+        Address address1 = new Address(null,null, "Fruit");
+        Address address2 = new Address(null,null, "ABC");
+        assertTrue(new Person(null, address1).isPassAddressLine("Fruit"));
+        assertFalse(new Person(null, address2).isPassAddressLine("Fruit"));
+    }
+
+
 }

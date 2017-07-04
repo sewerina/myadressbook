@@ -28,4 +28,13 @@ public class Person {
     public boolean isPassCountry(String country) {
         return this.address.isContainsCountry(country);
     }
+
+
+    public boolean isPassZip(String zip) {
+        return this.address.isContainsZip(zip);
+    }
+
+    public boolean isPassAddressLine(String addressLine) {
+        return this.address.isContainsAddressLine(addressLine);
+    }
 }

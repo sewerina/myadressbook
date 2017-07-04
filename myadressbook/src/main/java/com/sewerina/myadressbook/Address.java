@@ -17,4 +17,12 @@ public class Address {
         return this.country.contains(country);
     }
 
+    public boolean isContainsZip(String zip) {
+        return this.zip.contains(zip);
+    }
+
+    public boolean isContainsAddressLine(String addressLine) {
+        return this.addressLine.contains(addressLine);
+    }
+
 }

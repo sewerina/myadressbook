@@ -74,5 +74,45 @@ public class AdressBook {
         return result;
     }
 
+    public Person[] findByZip(String zip) {
+        int counter = 0;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPassZip(zip)) {
+                counter++;
+            }
+        }
+
+        Person[] result = new Person[counter];
+        int j = 0;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPassZip(zip)) {
+                result[j] = persons[i];
+                j++;
+            }
+        }
+
+        return result;
+    }
+
+
+    public Person[] findByAddressLine(String addressLine) {
+        int counter = 0;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPassAddressLine(addressLine)) {
+                counter++;
+            }
+        }
+
+        Person[] result = new Person[counter];
+        int j = 0;
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPassAddressLine(addressLine)) {
+                result[j] = persons[i];
+                j++;
+            }
+        }
+
+        return result;
+    }
 
 }
