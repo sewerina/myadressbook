@@ -144,4 +144,47 @@ public class AdressBookTest{
         assertTrue(persons[0] == person2);
     }
 
+    @Test
+    public void testDeletePersonByIndex() {
+        AdressBook adressBook = new AdressBook();
+
+        Person person1 = new Person("Elena", null);
+        Person person2 = new Person("Pickachu", null);
+        Person person3 = new Person("Toly", null);
+
+        adressBook.add(person1);
+        adressBook.add(person2);
+        adressBook.add(person3);
+
+        adressBook.deletePersonByIndex(1);
+
+        Person[] persons = adressBook.getAll();
+
+        assertTrue(persons.length == 2);
+        assertTrue(persons[0] == person1);
+        assertTrue(persons[1] == person3);
+    }
+
+    @Test
+    public void testDeletePersonByName() {
+        AdressBook adressBook = new AdressBook();
+
+        Person person1 = new Person("Pickachu", null);
+        Person person2 = new Person("Elena", null);
+        Person person3 = new Person("Toly", null);
+        Person person4 = new Person("Pickachu", null);
+
+        adressBook.add(person1);
+        adressBook.add(person2);
+        adressBook.add(person3);
+
+        adressBook.deletePersonByName("Pickachu");
+
+        Person[] persons = adressBook.getAll();
+
+        assertTrue(persons.length == 2);
+        assertTrue(persons[0] == person2);
+        assertTrue(persons[1] == person3);
+    }
+
 }

@@ -115,4 +115,28 @@ public class AdressBook {
         return result;
     }
 
+    public void deletePersonByIndex(int index) {
+        Person[] result = new Person[persons.length - 1];
+
+        for (int i = 0; i < index; i++) {
+            result[i] = persons[i];
+        }
+
+        for (int i = index; i < result.length; i++) {
+            result[i] = persons[i + 1];
+        }
+
+        persons = result;
+    }
+
+
+    public void deletePersonByName(String delname) {
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].isPass(delname)) {
+                deletePersonByIndex(i);
+                i--;
+            }
+        }
+    }
+
 }
