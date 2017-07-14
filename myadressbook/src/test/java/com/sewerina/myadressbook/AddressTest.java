@@ -1,5 +1,6 @@
 package com.sewerina.myadressbook;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -23,6 +24,13 @@ public class AddressTest {
     public void testIsContainsAddressLine() {
         assertTrue(new Address(null, null, "Honey").isContainsAddressLine("Honey"));
         assertFalse(new Address(null, null, "ABC").isContainsAddressLine("Honey"));
+    }
+
+    @Test
+    public void testSerialize() {
+        Address address = new Address("Japan", "ABC", "Fruit");
+        String s = address.serialize();
+        Assert.assertEquals("Japan,ABC,Fruit", s);
     }
 
 }

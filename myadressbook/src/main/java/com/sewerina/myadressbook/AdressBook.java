@@ -139,4 +139,30 @@ public class AdressBook {
         }
     }
 
+    public String serialize() {
+        StringBuffer sb = new StringBuffer();
+        for (Person p : persons) {
+            sb.append(p.serialize());
+            sb.append("\n");
+        }
+
+//        if (!sb.toString().equals("")) {
+//            sb.deleteCharAt(sb.length() - 1);
+//        }
+
+        if (sb.length() > 0) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
+        return sb.toString();
+    }
+
+    public void deserialize(String s) {
+        String[] rows = s.split("\n");
+        for (String row : rows) {
+            String[] fields = row.split(",");
+            Person person = new Person(fields[0], new Address(fields[1], fields[2], fields[3]));
+            add(person);
+        }
+    }
 }

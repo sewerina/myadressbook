@@ -1,11 +1,12 @@
 package com.sewerina.myadressbook;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class AdressBookTest{
+public class AdressBookTest {
 
     @Test
     public void testFindByName_returnNotZeroArray_afterAddPerson() {
@@ -108,7 +109,7 @@ public class AdressBookTest{
     public void test_findByZip() {
         AdressBook adressBook = new AdressBook();
 
-        Address address1 = new Address(null,"555", null);
+        Address address1 = new Address(null, "555", null);
         Person person1 = new Person(null, address1);
 
         Address address2 = new Address(null, "777", null);
@@ -185,6 +186,48 @@ public class AdressBookTest{
         assertTrue(persons.length == 2);
         assertTrue(persons[0] == person2);
         assertTrue(persons[1] == person3);
+    }
+
+    @Test
+    public void testSerialize() {
+        AdressBook adressBook = new AdressBook();
+
+        Person person1 = new Person("Pickachu", new Address("Japan", "ABC", "Fruit"));
+        adressBook.add(person1);
+
+        Person person2 = new Person("Bulbul", new Address("Japan", "CBA", "Fruit"));
+        adressBook.add(person2);
+
+        String str = adressBook.serialize();
+
+        Assert.assertEquals("Pickachu,Japan,ABC,Fruit\nBulbul,Japan,CBA,Fruit", str);
+    }
+
+    @Test
+    public void testSerialize_return_EmptyString_WhenAdressbookIsEmpty() {
+        AdressBook adressBook = new AdressBook();
+
+        String s = adressBook.serialize();
+
+        assertTrue(s.isEmpty());
+    }
+
+    @Test
+    public void testDeserialize() {
+        AdressBook adressBook = new AdressBook();
+
+        adressBook.deserialize("Pickachu,Japan,ABC,Fruit\nBulbul,Japan,CBA,Fruit");
+
+        Person[] persons = adressBook.getAll();
+
+        assertTrue(persons.length == 2);
+
+        Person person1 = new Person("Pickachu", new Address("Japan", "ABC", "Fruit"));
+
+        Person person2 = new Person("Bulbul", new Address("Japan", "CBA", "Fruit"));
+
+        assertTrue(persons[0].equals(person1) || persons[0].equals(person2));
+        assertTrue(persons[1].equals(person1) || persons[1].equals(person2));
     }
 
 }

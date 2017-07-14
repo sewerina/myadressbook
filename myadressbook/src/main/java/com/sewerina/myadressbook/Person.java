@@ -37,4 +37,22 @@ public class Person {
     public boolean isPassAddressLine(String addressLine) {
         return this.address.isContainsAddressLine(addressLine);
     }
+
+    public String serialize() {
+        return name + "," + address.serialize();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj instanceof Person){
+            Person person = (Person) obj;
+            boolean result = this.name.equals(person.name) && this.address.equals(person.address);
+            return result;
+        } else {
+            return false;
+        }
+    }
 }

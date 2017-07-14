@@ -1,6 +1,7 @@
 package com.sewerina.myadressbook;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -37,5 +38,13 @@ public class PersonTest{
         assertTrue(new Person(null, address1).isPassAddressLine("Fruit"));
         assertFalse(new Person(null, address2).isPassAddressLine("Fruit"));
     }
+
+    @Test
+    public void testSerialize() {
+        Person person = new Person("Pickachu", new Address("Japan", "ABC", "Fruit"));
+        String s = person.serialize();
+        Assert.assertEquals("Pickachu,Japan,ABC,Fruit", s);
+    }
+
 
 }
